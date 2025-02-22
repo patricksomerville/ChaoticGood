@@ -1,0 +1,26 @@
+{
+    "name": "flask-template",
+    "version": "1.0.0",
+    "files": {
+        "requirements.txt": {
+            "content": "flask==2.3.3\npython-dotenv==1.0.0\nflask-cors==4.0.0"
+        },
+        "app.py": {
+            "content": "from flask import Flask, jsonify\nfrom flask_cors import CORS\n\napp = Flask(__name__)\nCORS(app)\n\n@app.route('/')\ndef home():\n    return jsonify({'message': 'Welcome to {{project_name}}'})\n\n@app.route('/health')\ndef health():\n    return jsonify({'status': 'healthy'})\n\nif __name__ == '__main__':\n    app.run(debug=True)"
+        },
+        ".env": {
+            "content": "FLASK_APP=app.py\nFLASK_ENV=development"
+        },
+        "README.md": {
+            "content": "# {{project_name}}\n\nA Flask API service.\n\n## Setup\n\n1. Create a virtual environment:\n```bash\npython -m venv venv\n```\n\n2. Activate the virtual environment:\n```bash\nsource venv/bin/activate  # On Windows: .\\venv\\Scripts\\activate\n```\n\n3. Install dependencies:\n```bash\npip install -r requirements.txt\n```\n\n## Running the Application\n\n```bash\nflask run\n```\n\nThe API will be available at http://localhost:5000"
+        }
+    },
+    "install_commands": [
+        "python -m venv venv",
+        "source venv/bin/activate",
+        "pip install -r requirements.txt"
+    ],
+    "start_commands": [
+        "flask run"
+    ]
+}

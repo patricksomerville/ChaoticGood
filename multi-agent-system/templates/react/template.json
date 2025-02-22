@@ -1,0 +1,39 @@
+{
+    "name": "react-template",
+    "version": "1.0.0",
+    "files": {
+        "package.json": {
+            "content": {
+                "name": "{{project_name}}",
+                "version": "0.1.0",
+                "private": true,
+                "dependencies": {
+                    "react": "^18.2.0",
+                    "react-dom": "^18.2.0",
+                    "react-scripts": "5.0.1"
+                },
+                "scripts": {
+                    "start": "react-scripts start",
+                    "build": "react-scripts build",
+                    "test": "react-scripts test",
+                    "eject": "react-scripts eject"
+                }
+            }
+        },
+        "src/App.js": {
+            "content": "import React from 'react';\n\nfunction App() {\n  return (\n    <div className=\"App\">\n      <h1>Welcome to {{project_name}}</h1>\n    </div>\n  );\n}\n\nexport default App;"
+        },
+        "src/index.js": {
+            "content": "import React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport App from './App';\n\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(\n  <React.StrictMode>\n    <App />\n  </React.StrictMode>\n);"
+        },
+        "public/index.html": {
+            "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <title>{{project_name}}</title>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>"
+        }
+    },
+    "install_commands": [
+        "npm install"
+    ],
+    "start_commands": [
+        "npm start"
+    ]
+}

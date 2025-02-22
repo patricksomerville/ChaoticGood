@@ -1,0 +1,49 @@
+{
+    "name": "vue-template",
+    "version": "1.0.0",
+    "files": {
+        "package.json": {
+            "content": {
+                "name": "{{project_name}}",
+                "version": "0.1.0",
+                "private": true,
+                "scripts": {
+                    "serve": "vue-cli-service serve",
+                    "build": "vue-cli-service build",
+                    "lint": "vue-cli-service lint"
+                },
+                "dependencies": {
+                    "core-js": "^3.8.3",
+                    "vue": "^3.2.13"
+                },
+                "devDependencies": {
+                    "@babel/core": "^7.12.16",
+                    "@babel/eslint-parser": "^7.12.16",
+                    "@vue/cli-plugin-babel": "~5.0.0",
+                    "@vue/cli-plugin-eslint": "~5.0.0",
+                    "@vue/cli-service": "~5.0.0",
+                    "eslint": "^7.32.0",
+                    "eslint-plugin-vue": "^8.0.3"
+                }
+            }
+        },
+        "src/App.vue": {
+            "content": "<template>\n  <div id=\"app\">\n    <h1>Welcome to {{project_name}}</h1>\n  </div>\n</template>\n\n<script>\nexport default {\n  name: 'App'\n}\n</script>\n\n<style>\n#app {\n  font-family: Avenir, Helvetica, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-align: center;\n  color: #2c3e50;\n  margin-top: 60px;\n}\n</style>"
+        },
+        "src/main.js": {
+            "content": "import { createApp } from 'vue'\nimport App from './App.vue'\n\ncreateApp(App).mount('#app')"
+        },
+        "public/index.html": {
+            "content": "<!DOCTYPE html>\n<html lang=\"\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">\n    <title>{{project_name}}</title>\n  </head>\n  <body>\n    <div id=\"app\"></div>\n  </body>\n</html>"
+        },
+        "README.md": {
+            "content": "# {{project_name}}\n\n## Project setup\n```\nnpm install\n```\n\n### Compiles and hot-reloads for development\n```\nnpm run serve\n```\n\n### Compiles and minifies for production\n```\nnpm run build\n```\n\n### Lints and fixes files\n```\nnpm run lint\n```"
+        }
+    },
+    "install_commands": [
+        "npm install"
+    ],
+    "start_commands": [
+        "npm run serve"
+    ]
+}

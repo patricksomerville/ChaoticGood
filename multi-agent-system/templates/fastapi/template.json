@@ -1,0 +1,41 @@
+{
+    "name": "fastapi-template",
+    "version": "1.0.0",
+    "files": {
+        "requirements.txt": {
+            "content": "fastapi==0.103.1\nuvicorn==0.23.2\npython-dotenv==1.0.0\npydantic==2.3.0"
+        },
+        "main.py": {
+            "content": "from fastapi import FastAPI\nfrom fastapi.middleware.cors import CORSMiddleware\n\napp = FastAPI(title=\"{{project_name}}\")\n\n# Configure CORS\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)\n\n@app.get(\"/\")\nasync def root():\n    return {\"message\": \"Welcome to {{project_name}}\"}\n\n@app.get(\"/health\")\nasync def health_check():\n    return {\"status\": \"healthy\"}\n"
+        },
+        ".env": {
+            "content": "APP_NAME={{project_name}}\nDEBUG=True\nHOST=0.0.0.0\nPORT=8000"
+        },
+        "README.md": {
+            "content": "# {{project_name}}\n\nA FastAPI service.\n\n## Setup\n\n1. Create a virtual environment:\n```bash\npython -m venv venv\n```\n\n2. Activate the virtual environment:\n```bash\nsource venv/bin/activate  # On Windows: .\\venv\\Scripts\\activate\n```\n\n3. Install dependencies:\n```bash\npip install -r requirements.txt\n```\n\n## Running the Application\n\n```bash\nuvicorn main:app --reload\n```\n\nThe API will be available at http://localhost:8000\n\n## API Documentation\n\n- Swagger UI: http://localhost:8000/docs\n- ReDoc: http://localhost:8000/redoc"
+        },
+        "app/__init__.py": {
+            "content": ""
+        },
+        "app/models.py": {
+            "content": "from pydantic import BaseModel\n\n# Define your Pydantic models here\n"
+        },
+        "app/routes.py": {
+            "content": "from fastapi import APIRouter\n\nrouter = APIRouter()\n\n# Define your routes here\n"
+        },
+        "tests/__init__.py": {
+            "content": ""
+        },
+        "tests/test_main.py": {
+            "content": "from fastapi.testclient import TestClient\nfrom main import app\n\nclient = TestClient(app)\n\ndef test_read_root():\n    response = client.get(\"/\")\n    assert response.status_code == 200\n    assert response.json() == {\"message\": \"Welcome to {{project_name}}\"}\n\ndef test_health_check():\n    response = client.get(\"/health\")\n    assert response.status_code == 200\n    assert response.json() == {\"status\": \"healthy\"}\n"
+        }
+    },
+    "install_commands": [
+        "python -m venv venv",
+        "source venv/bin/activate",
+        "pip install -r requirements.txt"
+    ],
+    "start_commands": [
+        "uvicorn main:app --reload"
+    ]
+}
